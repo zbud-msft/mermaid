@@ -8,8 +8,6 @@ flowchart
     style Unhealthy fill:#F88
     Endpoint_Reachability(Check Service Endpoint Reachability)
     Telemetry_Config(Check if telemetry config is running in insecure mode)
-    Secure_mode(Telemetry Secure Mode)
-    Insecure_mode(Telemetry Insecure Mode)
     Cert_Validity(Check Certificate Validity)
     ACL_Rules(Check ACL Rules and IPTables)
     Healthy(Container is healthy)
@@ -23,10 +21,8 @@ flowchart
     Endpoint_Reachability -->|Reachable|Telemetry_Config
     Telemetry_Config -->|Secure Mode|Cert_Validity
     Telemetry_Config -->|Insecure Mode|ACL_Rules
-    Cert_Validity --> Unhealthy
-    Cert_Validity --> Telemetry_Config
-    Telemetry_Config --> Unhealthy
-    Telemetry_Config --> ACL_Rules
-    ACL_Rules --> Unhealthy
-    ACL_Rules --> Healthy
+    Cert_Validity -->|Missing or Expired|Unhealthy
+    Cert_Validity -->|Valid|ACL_Rules
+    ACL_Rules -->|Invalid|Unhealthy
+    ACL_Rules -->|Valid|Healthy
 ```
