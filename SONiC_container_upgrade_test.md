@@ -34,7 +34,7 @@ flowchart
     OS_Version_Check -->|Not expected version|Upgrade
     Upgrade -->|Download Images|Trusty8
     Container_Upgrade_Test_Script -->|Pull all specified containers|ACR
-    Container_Upgrade_Test_Script -->|Execute_Test
+    Container_Upgrade_Test_Script -->Execute_Test
     Execute_Test -->|Get test cases|Testcase_File
     Execute_Test -->|Publish result|Kusto
     Kusto -->|All Testcases Pass|Kusto_Success
