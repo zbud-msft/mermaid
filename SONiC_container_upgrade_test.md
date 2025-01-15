@@ -22,13 +22,13 @@ flowchart
     Kusto_Failure(Failure Kusto Entry)
     style Kusto_Failure fill:#F88
 
-    Start -->|Trigger Pipeline|Pipeline_Inputs
     Testbed -->Pipeline_Inputs
     Image_URL -->Pipeline_Inputs
     OS_Versions -->Pipeline_Inputs
     Containers -->Pipeline_Inputs
     Script -->Pipeline_Inputs
-    Pipeline_Inputs -->|Start Run|ElasticTest
+    Pipeline_Inputs -->Start
+    Start -->|Pass Inputs|ElasticTest
     ElasticTest -->|Run Test Script|Container_Upgrade_Test_Script
     Container_Upgrade_Test_Script -->OS_Version_Check
     OS_Version_Check -->|Not expected version|Upgrade
@@ -39,5 +39,5 @@ flowchart
     Execute_Test -->|Publish result|Kusto
     Kusto -->|All Testcases Pass|Kusto_Success
     Kusto -->|Any Testcase Fails|Kusto_Failure
-    Kusto -->Container_Upgrade_Test_Script
+    Kusto -->|Test Next Pairing|Container_Upgrade_Test_Script
 ```
