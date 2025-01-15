@@ -10,12 +10,12 @@ flowchart
     Script(Test Script)
     ElasticTest(ElasticTest)
     Container_Upgrade_Test_Script(container_upgrade/test_container_upgrade_test.py)
-    OS_Version_Check(Check if current version is correct version)
+    OS_Version_Check(1. Check if current version is correct version)
     Upgrade(Upgrade to next OS Version, else exit)
-    ACR(Azure Container Registry)
+    ACR(2. Azure Container Registry)
     Trusty8(Trusty8 Image Server)
     Testcase_File(container_upgrade/testcases.json)
-    Execute_Test(Run testcases)
+    Execute_Test(3. Run testcases)
     Kusto(Kusto)
     Kusto_Success(Success Kusto Entry)
     style Kusto_Success fill:#AF9
@@ -34,8 +34,8 @@ flowchart
     OS_Version_Check -->|Not expected version|Upgrade
     Upgrade -->|Download Images|Trusty8
     Container_Upgrade_Test_Script -->|Pull all specified containers|ACR
-    Container_Upgrade_Test_Script -->|Get Testcases|Testcase_File
-    Testcase_File -->Execute_Test
+    Container_Upgrade_Test_Script -->|Execute_Test
+    Execute_Test -->|Get test cases|Testcase_File
     Execute_Test -->|Publish result|Kusto
     Kusto -->|All Testcases Pass|Kusto_Success
     Kusto -->|Any Testcase Fails|Kusto_Failure
