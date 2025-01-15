@@ -40,5 +40,5 @@ flowchart
     Execute_Test -->|Publish result|Kusto
     Kusto -->|All Testcases Pass|Kusto_Success
     Kusto -->|Any Testcase Fails|Kusto_Failure
-    Kusto -->OS_Version_Check
+    Kusto -->Container_Upgrade_Test_Script
 ```
