@@ -1,7 +1,7 @@
 ```mermaid
 sequenceDiagram
     participant C as GWS Client
-    participant S as SONic Telemetry Server
+    participant S as SONiC Telemetry Server
 
 
     C->>S: Initiates TLS handshake<br/>Sends Client Cert
