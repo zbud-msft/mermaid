@@ -11,12 +11,12 @@ flowchart
     I[Client: Checks server certificate CN<br/>Against SslTargetNameOverride]
     J[Both: Decide to accept or reject connection]
 
-A -> B
-B -> D
-D -> E
-E -> F
-F -> G
-G -> H
-H -> I
-I -> J
+    A --> B
+    B --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
 ```
